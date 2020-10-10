@@ -18,7 +18,7 @@ def get_session():
         response.raise_for_status()
 
         bearer_token = response.json()["auth"]["auth_token"]
-        session.auth = (bearer_token, "")
+        session.headers = {"Authorization": f"Bearer {bearer_token}"}
 
     except requests.exceptions.HTTPError:
 
